@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration name="XmlConfig">
+    <Appenders>
+        <RollingFile name="File"
+                     fileName="./log/attendeee.log"
+                     filePattern="./log/attendeee-%d{MM-dd-yyyy}-%i.log.gz">
+            <PatternLayout pattern="[%d][%p][%c] %m%n"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="10 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="10"/>
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <Logger name="org.xnio.nio" level="warn" />
+        <Logger name="com.zaxxer.hikari" level="warn" />
+        <Root level="info">
+            <AppenderRef ref="File"/>
+        </Root>
+    </Loggers>
+</Configuration>
